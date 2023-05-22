@@ -1,0 +1,42 @@
+.active {
+  background-color: rgb(39, 161, 25);
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.logoutBtn {
+  background-color: rgb(225, 101, 101);
+  margin: 0px 0px 0px 10px;
+  /* padding: 8px; */
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.logoutBtn:hover {
+  background-color: black;
+  color: white;
+}
+
+#userName {
+  font-size: 15px;
+  color: white;
+  text-decoration: none;
+}
+
+#logo {
+  width: 100px;
+  height: 50px;
+}
+
+.mat-toolbar {
+  background: rgb(0, 52, 141);
+  color: white;
+}

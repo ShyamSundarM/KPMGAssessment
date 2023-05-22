@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="d-flex justify-content-center" id="loginCard">
+    <mat-card>
+      <mat-card-title class="d-flex justify-content-center"
+        ><h1>Login</h1></mat-card-title
+      >
+      <mat-card-content class="d-flex justify-content-center">
+        <form
+          class="example-form"
+          #form="ngForm"
+          (ngSubmit)="onLoginClick(form)"
+        >
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Enter your Email Id</mat-label>
+              <input
+                name="email"
+                type="email"
+                placeholder="someone@someDomain.com"
+                matInput
+                [(ngModel)]="emailVar"
+                #email="ngModel"
+                required
+                [pattern]="emailPattern"
+              />
+              <mat-error *ngIf="email.errors?.['required']"
+                >Email is required</mat-error
+              >
+              <mat-error *ngIf="email.errors?.['pattern']"
+                >Email not in a proper format</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Enter Password</mat-label>
+              <input
+                #pwd
+                name="password"
+                type="password"
+                placeholder="Password"
+                matInput
+                [(ngModel)]="pwdVar"
+                #password="ngModel"
+                required
+                minlength="7"
+                maxlength="14"
+              />
+              <mat-error
+                *ngIf="password.errors?.['minlength'] || password.errors?.['maxlength']"
+                >Password should be between 7-14 characters</mat-error
+              >
+              <mat-error *ngIf="password.errors?.['required']"
+                >Password is required</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div class="d-flex justify-content-end align-items-center">
+            <div *ngIf="isLoading" class="loadingio-spinner-bars-i41hgeva09i">
+              <div class="ldio-20oosd40e13">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+            <button
+              type="submit"
+              mat-raised-button
+              color="primary"
+              [disabled]="!form.valid"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

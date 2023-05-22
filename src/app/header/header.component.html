@@ -1,0 +1,36 @@
+<mat-toolbar>
+  <img
+    id="logo"
+    src="https://assets.kpmg.com/is/image/kpmg/KPMG%20logo%20-%20dark%20blue%20background:cq5dam.web.670.280"
+  />
+  <span>Assessment</span>
+  <span class="example-spacer"></span>
+  <div class="d-flex align-items-center">
+    <a id="userName" *ngIf="authService.isSessionValid()"
+      >Welcome {{ getUserName() }}</a
+    >
+    <a
+      class="ms-3"
+      *ngIf="authService.isSessionValid()"
+      mat-button
+      [routerLink]="'/home'"
+      routerLinkActive="active"
+      >Home</a
+    >
+    <a
+      *ngIf="!authService.isSessionValid()"
+      mat-button
+      [routerLink]="'/login'"
+      routerLinkActive="active"
+      >Login</a
+    >
+    <a
+      class="logoutBtn"
+      *ngIf="authService.isSessionValid()"
+      (click)="authService.logout()"
+    >
+      LogOut
+      <mat-icon class="ms-2">logout</mat-icon>
+    </a>
+  </div>
+</mat-toolbar>

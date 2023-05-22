@@ -1,0 +1,119 @@
+<div class="">
+  <div *ngIf="isAnyLoaded()" class="animContainer">
+    <div class="lds-roller">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="d-flex" id="browserContainer">
+    <highcharts-chart
+      *ngIf="!isBrowserLoading"
+      [Highcharts]="highCharts"
+      [options]="!isBrowserLoading && pieOptions"
+      style="width: 100%; flex: 1"
+    >
+    </highcharts-chart>
+    <div style="flex: 1" id="tableContainer">
+      <table mat-table matSort [dataSource]="pieDataSource">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td mat-cell *matCellDef="let e">{{ e.id }}</td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+          <td mat-cell *matCellDef="let e">{{ e.name }}</td>
+        </ng-container>
+        <ng-container matColumnDef="share">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Share</th>
+          <td mat-cell *matCellDef="let e">{{ e.share }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="pieColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: pieColumns"></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="d-flex" id="JobContainer">
+    <highcharts-chart
+      *ngIf="!isJobLoading"
+      [Highcharts]="highCharts"
+      [options]="!isJobLoading && lineOptions"
+      style="width: 100%; flex: 1"
+    >
+    </highcharts-chart>
+    <div style="flex: 1" id="tableContainer">
+      <table mat-table matSort [dataSource]="lineDataSource">
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+          <td mat-cell *matCellDef="let e">{{ e.category }}</td>
+        </ng-container>
+        <ng-container matColumnDef="developers">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Developers</th>
+          <td mat-cell *matCellDef="let e">{{ e.developers }}</td>
+        </ng-container>
+        <ng-container matColumnDef="manufacturing">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Manufacturing
+          </th>
+          <td mat-cell *matCellDef="let e">{{ e.manufacturing }}</td>
+        </ng-container>
+        <ng-container matColumnDef="sales">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Sales</th>
+          <td mat-cell *matCellDef="let e">{{ e.sales }}</td>
+        </ng-container>
+        <ng-container matColumnDef="operations">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Operations</th>
+          <td mat-cell *matCellDef="let e">{{ e.operations }}</td>
+        </ng-container>
+        <ng-container matColumnDef="other">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Other</th>
+          <td mat-cell *matCellDef="let e">{{ e.other }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="lineColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: lineColumns"></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="d-flex" id="RainContainer">
+    <highcharts-chart
+      *ngIf="!isRainDataLoading"
+      [Highcharts]="highCharts"
+      [options]="!isRainDataLoading && barOptions"
+      style="width: 100%; flex: 1"
+    >
+    </highcharts-chart>
+    <div style="flex: 1" id="tableContainer">
+      <table mat-table matSort [dataSource]="barDataSource">
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+          <td mat-cell *matCellDef="let e">{{ e.category }}</td>
+        </ng-container>
+        <ng-container matColumnDef="tokyo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Tokyo</th>
+          <td mat-cell *matCellDef="let e">{{ e.tokyo }}</td>
+        </ng-container>
+        <ng-container matColumnDef="newYork">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>NewYork</th>
+          <td mat-cell *matCellDef="let e">{{ e.newYork }}</td>
+        </ng-container>
+        <ng-container matColumnDef="london">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>London</th>
+          <td mat-cell *matCellDef="let e">{{ e.london }}</td>
+        </ng-container>
+        <ng-container matColumnDef="berlin">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>berlin</th>
+          <td mat-cell *matCellDef="let e">{{ e.berlin }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="barColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: barColumns"></tr>
+      </table>
+    </div>
+  </div>
+</div>
